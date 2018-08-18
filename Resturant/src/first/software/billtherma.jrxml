@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="229" pageHeight="1500" columnWidth="189" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0029d1fa-b3bd-4d67-ae91-a525c9b6d2d0">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="718"/>
+	<queryString>
+		<![CDATA[select rs.recipt, rs.dish as Dish, rs.item as Item,rs.item_quantity as Item_Quantity,rs.item_rate as Item_Rate ,
+(rs.item_quantity * rs.item_rate) as Total, bt.booking_date,bt.booking_time, p.cos_name,(p.bill_amount - p.Discount)as bill,p.Discount,p.amount_payble
+,p.amount_remain,p.amount_return,p.cell#,p.Adress,p.Booking_person,p.bill_amount,p.edit
+ from reserve rs 
+inner join book_time bt
+On rs.recipt = bt.recipt
+inner join Pay p
+on rs.recipt = p.recipt
+where rs.recipt = 'O_B764'
+order by rs.dish]]>
+	</queryString>
+	<field name="recipt" class="java.lang.String"/>
+	<field name="Dish" class="java.lang.String"/>
+	<field name="Item" class="java.lang.String"/>
+	<field name="Item_Quantity" class="java.lang.Integer"/>
+	<field name="Item_Rate" class="java.lang.Integer"/>
+	<field name="Total" class="java.lang.Integer"/>
+	<field name="booking_date" class="java.lang.String"/>
+	<field name="booking_time" class="java.lang.String"/>
+	<field name="cos_name" class="java.lang.String"/>
+	<field name="bill" class="java.lang.Integer"/>
+	<field name="Discount" class="java.lang.Integer"/>
+	<field name="amount_payble" class="java.lang.String"/>
+	<field name="amount_remain" class="java.lang.String"/>
+	<field name="amount_return" class="java.lang.String"/>
+	<field name="cell#" class="java.lang.String"/>
+	<field name="Adress" class="java.lang.String"/>
+	<field name="Booking_person" class="java.lang.String"/>
+	<field name="bill_amount" class="java.lang.String"/>
+	<field name="edit" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="24" y="32" width="114" height="32" uuid="97bd9260-e0fd-446b-90de-9596582eb05a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Owais Pakwan Center]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="73" width="36" height="11" uuid="4ba0d416-3fa8-45b9-931b-f528df1c0b20"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reciept #]]></text>
+			</staticText>
+			<line>
+				<reportElement x="35" y="84" width="51" height="1" uuid="264ac9fd-2783-4352-8b59-2da11f842860"/>
+			</line>
+			<textField>
+				<reportElement x="40" y="71" width="50" height="14" uuid="1cf9019b-fa9c-456d-a4ee-812a74ffda90"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recipt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="109" y="74" width="24" height="11" uuid="c9c50ae9-16cc-48bb-8855-1cb4714ecb6b"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<line>
+				<reportElement x="138" y="84" width="51" height="1" uuid="602914ab-4e89-4738-bdf2-b88bf411b75a"/>
+			</line>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="139" y="72" width="51" height="20" uuid="2178ae07-ff10-4623-94b7-4867c27ebe40"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<ellipse>
+				<reportElement x="154" y="37" width="28" height="21" uuid="f24653fe-513d-41b2-bda5-8a71aabe6f30"/>
+			</ellipse>
+			<textField>
+				<reportElement x="164" y="40" width="15" height="20" uuid="8ca79afc-7017-477a-a0ef-9b4100a3deed"/>
+				<textFieldExpression><![CDATA[$F{edit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="329" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="16" width="71" height="20" uuid="c848fbe9-ce05-4626-9e2d-b64be2790eda"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costumer Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="36" width="71" height="20" uuid="8bef3572-0632-4332-9391-3b61062c41cc"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill Amount :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="107" width="71" height="20" uuid="09769022-2dd9-4561-bfa8-ceaf9b6f2140"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advance Amount :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="127" width="71" height="20" uuid="e2f1c6c6-5b30-4a15-9a8a-12e62f61c4bf"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Balance Amount :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="247" width="71" height="20" uuid="fc5e4a7e-76aa-46f3-9497-1dbc39cfd9bd"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Adress :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="267" width="71" height="20" uuid="c74c5057-339f-4239-9fd6-96f7f03e11e6"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cell # :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="298" width="71" height="20" uuid="874f00a9-50d3-49a0-b7dc-f082d270212b"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Booking Person :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="240" width="183" height="1" uuid="b7b5c649-3570-41a2-a500-896343505b9c"/>
+			</line>
+			<line>
+				<reportElement x="3" y="291" width="183" height="1" uuid="5d7be848-7f52-43fb-af69-102b64ecd961"/>
+			</line>
+			<textField>
+				<reportElement x="74" y="14" width="87" height="15" uuid="d3a21426-2653-4b49-8784-327ba3ca8486"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cos_name}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="150" width="183" height="1" uuid="434e9f81-0236-4ce4-9683-0ace5294fe57"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="163" width="71" height="20" uuid="120439e5-d8b5-49ac-b519-3fe868cf33ff"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Delivery Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="184" width="71" height="20" uuid="5b738ef3-990e-44ce-9882-533a39b6099c"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Delivery Time :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="75" y="106" width="100" height="18" uuid="edcc88c4-1161-4d36-aea2-9ebd6026288c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount_payble}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="126" width="78" height="20" uuid="2d4da9f6-a37b-4543-b05a-024fcd111599"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount_remain}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="7" width="183" height="1" uuid="1a3c02bb-0c7d-4b0c-8cf1-a5575cdbbc50"/>
+			</line>
+			<textField>
+				<reportElement x="75" y="164" width="100" height="20" uuid="be04495e-6706-4efa-be5f-c32c8b5e0ae2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{booking_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="184" width="100" height="20" uuid="5486e269-eb1e-4326-b1e6-1cea707516d8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{booking_time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="250" width="110" height="20" uuid="6b50699c-c951-4c32-9fce-73ea850aea7a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Adress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="268" width="115" height="13" uuid="fb03ccb2-6562-4b34-ba34-8db38c32fc32"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cell#}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="321" width="183" height="1" uuid="947291d4-ed02-40ba-a653-7daa10b695f5"/>
+			</line>
+			<textField>
+				<reportElement x="74" y="298" width="100" height="20" uuid="e9a2a236-9ab7-4797-bbd3-a2d9f5a57e7c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Booking_person}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="56" width="71" height="20" uuid="b1964bd8-7b6d-451d-b53a-d3d119aed315"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discount Amount :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="74" y="36" width="90" height="20" uuid="b0eba7ab-f9a2-455f-b3d8-34f194d4bc0f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bill_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="76" y="56" width="85" height="20" uuid="055ed995-1749-4b7d-aaf1-0ebda5146632"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Discount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="78" width="183" height="1" uuid="e4f0936b-826d-4d5f-98fd-e3d875a18fab"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="87" width="70" height="20" uuid="1834e00b-12ca-4d6f-a4dd-a0d0ba877512"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill Amount :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="75" y="86" width="100" height="20" uuid="52d52d62-6e95-428f-b9c9-1028f0ef646a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bill}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="204" width="71" height="19" uuid="18427c74-c213-4a7b-b48f-0de2946ad96b"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Delivery Charges :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="79" y="213" width="55" height="1" uuid="5b5ac2a2-7201-4656-86c2-641a2fecd92a"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="12" width="24" height="20" uuid="7485cfd2-face-4149-93b3-ab2d3e967993"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dish]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="12" width="38" height="20" uuid="8a25de05-50ed-4d82-8e93-ce420f8d0bf5"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="12" width="38" height="20" uuid="d2894467-3d5a-4066-a393-178c4c6501e0"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="12" width="24" height="20" uuid="415de28b-f620-4bda-94f5-4f0db53373eb"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="12" width="28" height="20" uuid="4bf28650-2e28-4fe0-b62e-f8acd773a894"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="3" width="40" height="26" uuid="acc176f8-f4ca-430c-b408-31da01fac8c0"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Dish}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="3" width="45" height="24" uuid="532d71fb-693e-4c35-acc2-7fa40d6a694b"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Item}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="3" width="35" height="20" uuid="51675a46-bd62-46e0-9fbc-1c0cebd181ff"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Item_Quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="3" width="24" height="20" uuid="30205c59-0491-481d-947f-330a21d4e8d0"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Item_Rate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="163" y="3" width="29" height="20" uuid="4171c3a1-51af-4e1a-8835-36cae98f60ae"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="2" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="2" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="38" y="12" width="125" height="12" uuid="ece1a6ac-fc2a-4f45-896f-e15e91df73d6"/>
+				<textElement textAlignment="Justified">
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[03339107704 / 03430805324 (Ibtesam & Hamza)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="2" width="125" height="10" uuid="adbf6623-5165-48af-907c-65c93c463e1c"/>
+				<textElement>
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[This Software was Developed by SGK Developers]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

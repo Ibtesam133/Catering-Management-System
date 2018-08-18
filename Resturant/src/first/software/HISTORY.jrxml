@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f75c041f-9a15-43b4-9abb-7dee3efb4206">
+	<property name="ireport.zoom" value="2.8531167061100082"/>
+	<property name="ireport.x" value="680"/>
+	<property name="ireport.y" value="153"/>
+	<queryString>
+		<![CDATA[select distinct p.recipt aS [Reciept #],
+ b.booking_date as [Booking Date],p.cos_name as [Costumer Name]
+, (p.bill_amount-P.Discount) aS [Bill Amount],p.amount_payble as [Amount Payble],
+p.amount_remain as [Amount Remainig],P.cell#,P.[Target]
+ from Pay p
+inner join book_time b
+on p.recipt = b.recipt
+where b.booking_date between '1/8/2017' and '9/8/2017']]>
+	</queryString>
+	<field name="Reciept #" class="java.lang.String"/>
+	<field name="Booking Date" class="java.lang.String"/>
+	<field name="Costumer Name" class="java.lang.String"/>
+	<field name="Bill Amount" class="java.lang.Integer"/>
+	<field name="Amount Payble" class="java.lang.String"/>
+	<field name="Amount Remainig" class="java.lang.String"/>
+	<field name="cell#" class="java.lang.String"/>
+	<field name="Target" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement x="169" y="10" width="244" height="32" uuid="2f0eb343-90bd-421c-949f-01816cd4ba1b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Owais Pakwan Center]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="440" y="69" width="114" height="20" uuid="9a000a23-f9c9-4f81-a05c-c79e3705da58"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement x="510" y="7" width="44" height="38" uuid="5a66a8f6-77a7-4d8a-9bf5-631f53be5d78"/>
+			</rectangle>
+			<textField>
+				<reportElement x="528" y="17" width="22" height="20" uuid="962539ad-5c7c-4a1c-8424-7205620090e4"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="154" y="9" width="244" height="32" uuid="09d7acd0-1092-4b94-b02b-63836d449069"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[History]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="49" width="555" height="1" uuid="b34eae6c-64f8-4b35-807a-111022de1035"/>
+			</line>
+			<line>
+				<reportElement x="0" y="47" width="555" height="1" uuid="f3e1c19a-9af7-45c5-843c-2232853f8408"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<line>
+				<reportElement x="441" y="-55" width="110" height="1" uuid="1592cfd0-1533-46b4-9505-03c1ef2bad19"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="41" width="68" height="20" uuid="22e720a4-4a51-4f63-85f7-45677e6577d8"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reciept #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="41" width="86" height="20" uuid="82e8f2b6-c865-4ad0-a950-67d37f439af4"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Costumer Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="41" width="86" height="20" uuid="8d3dd409-e662-44c7-8d18-178944adb630"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bill Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="41" width="88" height="20" uuid="096d587b-338d-412a-af04-3f5401927e18"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advance Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="41" width="98" height="20" uuid="8ada711a-6933-4791-ab8a-e2b2e8cb50b8"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount Balance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="41" width="45" height="20" uuid="14899d0e-8673-47bc-afb2-a9302f1f92bd"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Target]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="41" width="54" height="20" uuid="f5a50a4f-5972-466b-8b1f-043ddbe3bab8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[cell#]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="5" width="68" height="20" uuid="5cc6f23a-cc22-48cd-be2f-479c836769d0"/>
+				<textFieldExpression><![CDATA[$F{Reciept #}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="1" width="551" height="1" uuid="45afdea8-df12-4fda-a350-abfbfbce3ee5"/>
+			</line>
+			<textField>
+				<reportElement x="68" y="5" width="100" height="20" uuid="47d10b42-2d2f-4fa9-a8ee-1310f21ec9a2"/>
+				<textFieldExpression><![CDATA[$F{Costumer Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="2" width="94" height="20" uuid="b4d3e0ee-345a-4d9a-b152-1eedc98d6504"/>
+				<textFieldExpression><![CDATA[$F{Bill Amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="5" width="79" height="20" uuid="8e7c6472-bcb9-442e-820a-9ad960589926"/>
+				<textFieldExpression><![CDATA[$F{Amount Payble}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="4" width="75" height="20" uuid="919d9107-637e-40c0-b42a-6d0a3c97ed9a"/>
+				<textFieldExpression><![CDATA[$F{Amount Remainig}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="439" y="5" width="57" height="20" uuid="38978957-bcf8-48d4-821a-5524b4c69bc6"/>
+				<textFieldExpression><![CDATA[$F{Target}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="496" y="3" width="58" height="20" uuid="3e0cc21e-280d-4663-bef0-ae1036b7498f"/>
+				<textFieldExpression><![CDATA[$F{cell#}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="46" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
